@@ -1,0 +1,14 @@
+services:
+  postgres-chapter-04:
+    profiles:
+      - chapter-04
+    image: postgres:17.2
+    network_mode: bridge
+    environment:
+      POSTGRES_DB: local
+      POSTGRES_USER: local
+      POSTGRES_PASSWORD: local
+    ports:
+      - "5402:5432"
+    volumes:
+      - ./shared-chapter-04-volume/:/var/lib/postgresql/data

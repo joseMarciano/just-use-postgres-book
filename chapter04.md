@@ -4,10 +4,11 @@ Code listings for the Chapter 4, Indexes.
 
 **Preload sample dataset**
 ```shell
-docker cp data/gaming/. postgres:/home/.
+docker-compose --profile chapter-04 up -d postgres-chapter-04
+docker-compose --profile chapter-04 cp data/gaming/. postgres-chapter-04:/home/.
 
-docker exec -it postgres psql -U postgres -c "\i /home/gaming_ddl.sql"
-docker exec -it postgres psql -U postgres -c "\i /home/gaming_data.sql"
+docker-compose --profile chapter-04 exec -T postgres-chapter-04 psql -U local -d local -f /home/gaming_ddl.sql
+docker-compose --profile chapter-04 exec -T postgres-chapter-04 psql -U local -d local -f /home/gaming_data.sql
 ```
 
 **Listing 4.1 Primary Index Details**
